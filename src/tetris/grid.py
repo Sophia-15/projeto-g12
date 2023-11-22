@@ -55,11 +55,11 @@ class Grid:
 			for column in range(self.num_cols):
 				self.grid[row][column] = 0
 
-	def draw(self, screen):
+	def draw(self, screen, width, height):
 		for row in range(self.num_rows):
 			for column in range(self.num_cols):
 				cell_value = self.grid[row][column]
 				# o "+X" a seguir representam os eixos x e y, repectivamente.
-				cell_rect = pygame.Rect(column*self.cell_size + 535, row*self.cell_size + 80,
+				cell_rect = pygame.Rect(column*self.cell_size + width, row*self.cell_size + height,
 				self.cell_size -1, self.cell_size -1)
 				pygame.draw.rect(screen, self.colors[cell_value], cell_rect)
