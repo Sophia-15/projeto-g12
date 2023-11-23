@@ -99,16 +99,16 @@ class Game:
         return True
 
     def draw(self, screen, width = 535, height = 80):
-        self.grid.draw(screen,  height + 30 // 2, width + (width * 0.4),)
+        self.grid.draw(screen,  height + 400 // 2, width)
         # a mudança no x e y do grid.py precisa ser acompanhada da mesma mudança aqui
-        self.current_block.draw(screen, height + 30 // 2, width + (width * 0.4),)
+        self.current_block.draw(screen, height + 400 // 2, width)
 
         if self.next_block.id == 3:
-            self.next_block.draw(screen, 255, 290)
+            self.next_block.draw(screen, 280, 290 + 40)
         elif self.next_block.id == 4:
-            self.next_block.draw(screen, 255, 280)
+            self.next_block.draw(screen, 280, 280 + 40)
         else:
-            self.next_block.draw(screen, 270, 270)
+            self.next_block.draw(screen, 290, 270 + 40)
 
     def over(self):
         pygame.time.delay(0)

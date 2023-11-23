@@ -23,9 +23,9 @@ def battery_tetris():
     # next_surface = title_font.render("Next", True, Colors.white)
     game_over_surface = title_font.render("GAME OVER", True, Colors.white)
 
-    score_rect = pygame.Rect(615, 15, 170, 60)
+    score_rect = pygame.Rect(340, 50, 170, 60)
     # Alterar next_block em game.py após alterar next_rect
-    next_rect = pygame.Rect(320, 215, 170, 180)
+    next_rect = pygame.Rect(340, 255, 170, 180)
 
     # DEFINE DISPLAY
     # Eixos x e y, respectivamente.
@@ -85,8 +85,8 @@ def battery_tetris():
         # screen.blit(game_over_surface, (320, 450, 50, 50))
 
         pygame.draw.rect(screen, Colors.light_blue, score_rect, 0, 10)
-        screen.blit(score_value_surface, score_value_surface.get_rect(centerx=score_rect.centery,
-                                                                      centery=score_rect.centerx))
+        screen.blit(score_value_surface, score_value_surface.get_rect(centerx=score_rect.centerx,
+                                                                      centery=score_rect.centery))
         pygame.draw.rect(screen, Colors.light_blue, next_rect, 0, 10)
         game.draw(screen)
 

@@ -128,7 +128,7 @@ def infinity_runner():
             player_x += x_change
         if player_x < 0:
             player_x = 0
-        if player_x > monitor_size[0]:
+        if player_x > monitor_size[0]:  
             player_x = 430
 
         if y_change > 0 or player_y < 600:
@@ -160,7 +160,6 @@ def infinity_runner():
 def menu():
     games = [
         "INFINITY RUNNER",
-        "SPACE INVADERS",
         "TETRIS"
     ]
 
@@ -173,7 +172,7 @@ def menu():
 
     last_blink_time = pygame.time.get_ticks()
     show_text = True
-    blink_interval = 500
+    blink_interval = 300
 
     while True:
         color = game_text_colors[0] if show_text else game_text_colors[1]
@@ -192,7 +191,7 @@ def menu():
                 if event.key == pygame.K_RETURN:
                     if game_cont == 0:
                         infinity_runner()
-                    elif game_cont == 2:
+                    elif game_cont == 1:
                         battery_tetris()
 
         current_time = pygame.time.get_ticks()
@@ -211,19 +210,13 @@ def menu():
         infinity_runner_text_rect = infinity_runner_text.get_rect(
             center=((monitor_size[0] // 2), (monitor_size[1] // 2) - 100))
 
-        space_invaders_text = font_sm.render(
-            games[1], True, color if game_cont == 1 else (240, 253, 244))
-        space_invaders_text_rect = space_invaders_text.get_rect(
-            center=((monitor_size[0] // 2), (monitor_size[1] // 2) + 100))
-
         tetris_text = font_sm.render(
-            games[2], True, color if game_cont == 2 else (240, 253, 244))
+            games[1], True, color if game_cont == 1 else (240, 253, 244))
         tetris_text_rect = tetris_text.get_rect(
             center=((monitor_size[0] // 2), (monitor_size[1] // 2) + 300))
 
         screen.blit(main_menu_text, main_menu_text_rect)
         screen.blit(infinity_runner_text, infinity_runner_text_rect)
-        screen.blit(space_invaders_text, space_invaders_text_rect)
         screen.blit(tetris_text, tetris_text_rect)
 
         pygame.display.flip()
