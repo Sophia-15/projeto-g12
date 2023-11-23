@@ -13,9 +13,9 @@ monitor_size = [pygame.display.Info().current_w,
 
 screen = pygame.display.set_mode((monitor_size), pygame.RESIZABLE)
 font = pygame.font.Font(
-    r'C:\Users\fdayr\Documents\projects\cesar\projetos\projeto-g12\src\menu\retro.ttf', 124)
+    r'C:\Users\pcm7_cesar\Downloads\proj\projeto-g12\src\menu\retro.ttf', 124)
 font_sm = pygame.font.Font(
-    r'C:\Users\fdayr\Documents\projects\cesar\projetos\projeto-g12\src\menu\retro.ttf', 80)
+    r'C:\Users\pcm7_cesar\Downloads\proj\projeto-g12\src\menu\retro.ttf', 80)
 clock = pygame.time.Clock()
 
 def handle_choose_name(score, game_name):
@@ -60,7 +60,7 @@ def handle_choose_name(score, game_name):
                     else:
                         cont += 1
                     name[letter] = alphabet[cont]
-                if event.key == pygame.K_RETURN:
+                if event.key == pygame.K_RIGHT:
                     if letter != 2:
                         letter += 1
                         position += 1

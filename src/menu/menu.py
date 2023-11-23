@@ -3,7 +3,7 @@ import random
 import os
 import pygame
 import sys
-TETRIS_PATH = r'C:\Users\fdayr\Documents\projects\cesar\projetos\projeto-g12\src\tetris'
+TETRIS_PATH = r'C:\Users\pcm7_cesar\Downloads\proj\projeto-g12\src\tetris'
 sys.path.append(TETRIS_PATH)
 from main_tetris import battery_tetris
 
@@ -19,9 +19,9 @@ monitor_size = [pygame.display.Info().current_w,
 
 screen = pygame.display.set_mode((monitor_size), pygame.RESIZABLE)
 font = pygame.font.Font(
-    r'C:\Users\fdayr\Documents\projects\cesar\projetos\projeto-g12\src\menu\retro.ttf', 80)
+    r'C:\Users\pcm7_cesar\Downloads\proj\projeto-g12\src\menu\retro.ttf', 80)
 font_sm = pygame.font.Font(
-    r'C:\Users\fdayr\Documents\projects\cesar\projetos\projeto-g12\src\menu\retro.ttf', 50)
+    r'C:\Users\pcm7_cesar\Downloads\proj\projeto-g12\src\menu\retro.ttf', 50)
 clock = pygame.time.Clock()
 
 def infinity_runner():
@@ -37,7 +37,7 @@ def infinity_runner():
 
   background = (0,0,0)
   fps = 60
-  font = pygame.font.Font(r'C:\Users\fdayr\Documents\projects\cesar\projetos\projeto-g12\src\menu\retro.ttf', 20)
+  font = pygame.font.Font(r'C:\Users\pcm7_cesar\Downloads\proj\projeto-g12\src\menu\retro.ttf', 20)
   timer = pygame.time.Clock()
 
 
@@ -185,10 +185,12 @@ def menu():
                 if event.key == pygame.K_DOWN:
                     if game_cont != 2:
                         game_cont += 1
+                    elif game_cont == 2:
+                        game_cont = 0
                 if event.key == pygame.K_UP:
                     if game_cont != 0:
                         game_cont -= 1
-                if event.key == pygame.K_RETURN:
+                if event.key == pygame.K_RIGHT:
                     if game_cont == 0:
                         infinity_runner()
                     elif game_cont == 1:

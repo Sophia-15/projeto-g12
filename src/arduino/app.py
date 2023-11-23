@@ -3,7 +3,7 @@ import webbrowser
 from time import sleep
 import pyautogui
 
-PORT = 'COM10'
+PORT = 'COM3'
 
 arduino = serial.Serial(PORT, 9600)
 
