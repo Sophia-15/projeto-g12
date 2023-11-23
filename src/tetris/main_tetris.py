@@ -3,8 +3,8 @@ import sys
 from game import Game
 from colors import Colors
 
-MENU_PATH = r'C:\Users\fdayr\Documents\projects\cesar\projetos\projeto-g12\src\menu'
-TETRIS_PATH = r'C:\Users\fdayr\Documents\projects\cesar\projetos\projeto-g12\src\tetris'
+MENU_PATH = r'C:\Users\gmam_cesar\Downloads\python\PROJ\projeto-g12\src\menu'
+TETRIS_PATH = r'C:\Users\gmam_cesar\Downloads\python\PROJ\projeto-g12\src\tetris'
 
 sys.path.append(f'{MENU_PATH}')
 from choose_name import handle_choose_name
@@ -85,8 +85,8 @@ def battery_tetris():
         # screen.blit(game_over_surface, (320, 450, 50, 50))
 
         pygame.draw.rect(screen, Colors.light_blue, score_rect, 0, 10)
-        screen.blit(score_value_surface, score_value_surface.get_rect(centerx=score_rect.centerx,
-                                                                      centery=score_rect.centery))
+        screen.blit(score_value_surface, score_value_surface.get_rect(centerx=score_rect.centery,
+                                                                      centery=score_rect.centerx))
         pygame.draw.rect(screen, Colors.light_blue, next_rect, 0, 10)
         game.draw(screen)
 

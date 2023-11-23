@@ -3,7 +3,7 @@ from blocks import *
 import random
 import pygame
 
-SOUNDS_PATH = 'C:/Users/fdayr/Documents/projects/cesar/projetos/projeto-g12/src/tetris/Sounds'
+SOUNDS_PATH = 'C:/Users/gmam_cesar/Downloads/python/PROJ/projeto-g12/src/tetris/Sounds'
 class Game:
     def __init__(self):
         self.grid = Grid()
@@ -99,9 +99,9 @@ class Game:
         return True
 
     def draw(self, screen, width = 535, height = 80):
-        self.grid.draw(screen, width + (width * 0.4), height + 30 // 2)
+        self.grid.draw(screen,  height + 30 // 2, width + (width * 0.4),)
         # a mudança no x e y do grid.py precisa ser acompanhada da mesma mudança aqui
-        self.current_block.draw(screen, width + (width * 0.4), height + 30 // 2)
+        self.current_block.draw(screen, height + 30 // 2, width + (width * 0.4),)
 
         if self.next_block.id == 3:
             self.next_block.draw(screen, 255, 290)
