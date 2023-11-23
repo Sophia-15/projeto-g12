@@ -155,8 +155,8 @@ def infinity_runner():
 def menu():
     games = [
         "INFINITY RUNNER",
-        "SPACE INVADERS",
-        "TETRIS"
+        "TETRIS",
+        "RANKING"
     ]
 
     game_text_colors = [
@@ -179,7 +179,7 @@ def menu():
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_DOWN:
-                    if game_cont != 2:
+                    if game_cont != 3:
                         game_cont += 1
                 if event.key == pygame.K_UP:
                     if game_cont != 0:
@@ -189,6 +189,8 @@ def menu():
                         infinity_runner()
                     elif game_cont == 2:
                         battery_tetris()
+                    elif game_cont == 2:
+                        print("foi porra")
 
         current_time = pygame.time.get_ticks()
         if current_time - last_blink_time > blink_interval:
@@ -214,12 +216,18 @@ def menu():
         tetris_text = font_sm.render(
             games[2], True, color if game_cont == 2 else (240, 253, 244))
         tetris_text_rect = tetris_text.get_rect(
+            center=((monitor_size[0] // 2), (monitor_size[1] // 2) + 100))
+        
+        highscore_text = font_sm.render(
+            games[2], True, color if game_cont == 2 else (240, 253, 244))
+        highscore_text_rect = highscore_text.get_rect(
             center=((monitor_size[0] // 2), (monitor_size[1] // 2) + 300))
 
         screen.blit(main_menu_text, main_menu_text_rect)
         screen.blit(infinity_runner_text, infinity_runner_text_rect)
         screen.blit(space_invaders_text, space_invaders_text_rect)
         screen.blit(tetris_text, tetris_text_rect)
+        screen.blit(highscore_text, highscore_text_rect)
 
         pygame.display.flip()
 

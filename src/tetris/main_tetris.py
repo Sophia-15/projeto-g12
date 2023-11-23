@@ -42,7 +42,7 @@ def battery_tetris():
     pygame.time.set_timer(GAME_UPDATE, 200)
 
     # DEFINE BACKGROUND IMG
-    background_image = pygame.image.load(f"{TETRIS_PATH}/baterias_background.jpg")
+    background_image = pygame.image.load(f"{TETRIS_PATH}/background_tetris.jfif")
     background_rect = background_image.get_rect()
     # REDIMENSIONA BACKGROUND IMG PARA O DISPLAY
     background_image = pygame.transform.scale(background_image, monitor_size)
