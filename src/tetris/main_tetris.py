@@ -3,8 +3,8 @@ import sys
 from game import Game
 from colors import Colors
 
-MENU_PATH = r'C:\Users\gmam_cesar\Downloads\python\PROJ\projeto-g12\src\menu'
-TETRIS_PATH = r'C:\Users\gmam_cesar\Downloads\python\PROJ\projeto-g12\src\tetris'
+MENU_PATH = r'C:/Users/acgs_cesar/Desktop/projetos 1/projeto-g12/src/menu'
+TETRIS_PATH = r'C:/Users/acgs_cesar/Desktop/projetos 1/projeto-g12/src/tetris'
 
 sys.path.append(f'{MENU_PATH}')
 from choose_name import handle_choose_name
@@ -42,7 +42,7 @@ def battery_tetris():
     pygame.time.set_timer(GAME_UPDATE, 200)
 
     # DEFINE BACKGROUND IMG
-    background_image = pygame.image.load(f"{TETRIS_PATH}/baterias_background.jpg")
+    background_image = pygame.image.load(f"{TETRIS_PATH}/fundo_tetris_pe.jpg")
     background_rect = background_image.get_rect()
     # REDIMENSIONA BACKGROUND IMG PARA O DISPLAY
     background_image = pygame.transform.scale(background_image, monitor_size)
@@ -84,10 +84,10 @@ def battery_tetris():
         # if game.game_over == True:
         # screen.blit(game_over_surface, (320, 450, 50, 50))
 
-        pygame.draw.rect(screen, Colors.light_blue, score_rect, 0, 10)
+        pygame.draw.rect(screen, Colors.laranja_avanade, score_rect, 0, 10)
         screen.blit(score_value_surface, score_value_surface.get_rect(centerx=score_rect.centerx,
                                                                       centery=score_rect.centery))
-        pygame.draw.rect(screen, Colors.light_blue, next_rect, 0, 10)
+        pygame.draw.rect(screen, Colors.laranja_avanade, next_rect, 0, 10)
         game.draw(screen)
 
         pygame.display.update()
