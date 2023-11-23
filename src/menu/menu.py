@@ -42,7 +42,7 @@ def infinity_runner():
 
 
   player_x = 50
-  player_y = 600
+  player_y = 615
   y_change = 0
   x_change = 0
   gravity = 1.5
@@ -68,7 +68,7 @@ def infinity_runner():
         timer.tick(fps)
         display.fill(background)
         floor = pygame.draw.rect(display, white, [0, 650, monitor_size[0], 10])
-        player = pygame.draw.rect(display, (255,0,0), [player_x, player_y, 50, 50])
+        player = pygame.draw.rect(display, (255,0,0), [player_x, player_y, 35, 35])
         obstacles0 = pygame.draw.rect(display, blue, [obstacles[0], 600, 50, 50])
         obstacles1 = pygame.draw.rect(display, orange, [obstacles[1], 600, 50, 50])
         obstacles2 = pygame.draw.rect(display, yellow, [obstacles[2], 600, 50, 50])
@@ -94,7 +94,7 @@ def infinity_runner():
     ]
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE and y_change == 0:
-                    y_change = 26
+                    y_change = 27
                 if event.key == pygame.K_RIGHT:
                     x_change = 6
                 if event.key == pygame.K_LEFT:
@@ -109,18 +109,18 @@ def infinity_runner():
             if active:
                 obstacles[i] -=obstacles_speed
                 if obstacles[i] < -30:
-                    obstacles[i] = random.randint(1200, 1800)
+                    obstacles[i] = random.randint(monitor_size[0] + 50, monitor_size[0] + 500)
                     score += 15 
-                    if obstacles1.colliderect(obstacles0) or obstacles1.colliderect(obstacles2):
-                        obstacles[i] = random.randint(monitor_size[0], monitor_size[0])
-                    if obstacles2.colliderect(obstacles0) or obstacles2.colliderect(obstacles1):
-                        obstacles[i] = random.randint(monitor_size[0], monitor_size[0])
-                    if obstacles0.colliderect(obstacles1) or obstacles2.colliderect(obstacles2):
-                        obstacles[i] = random.randint(monitor_size[0], monitor_size[0])
-                    if obstacles3.colliderect(obstacles2) or obstacles2.colliderect(obstacles1):
-                        obstacles[i] = random.randint(monitor_size[0], monitor_size[0])
-                    if obstacles4.colliderect(obstacles1) or obstacles2.colliderect(obstacles2):
-                        obstacles[i] = random.randint(monitor_size[0], monitor_size[0])
+                    # if obstacles1.colliderect(obstacles0) or obstacles1.colliderect(obstacles2):
+                    #     obstacles[i] = random.randint(monitor_size[0], monitor_size[0])
+                    # if obstacles2.colliderect(obstacles0) or obstacles2.colliderect(obstacles1):
+                    #     obstacles[i] = random.randint(monitor_size[0], monitor_size[0])
+                    # if obstacles0.colliderect(obstacles1) or obstacles2.colliderect(obstacles2):
+                    #     obstacles[i] = random.randint(monitor_size[0], monitor_size[0])
+                    # if obstacles3.colliderect(obstacles2) or obstacles2.colliderect(obstacles1):
+                    #     obstacles[i] = random.randint(monitor_size[0], monitor_size[0])
+                    # if obstacles4.colliderect(obstacles1) or obstacles2.colliderect(obstacles2):
+                    #     obstacles[i] = random.randint(monitor_size[0], monitor_size[0])
                 if player.colliderect(obstacles0) or player.colliderect(obstacles1) or player.colliderect(obstacles2) or player.colliderect(obstacles3) or player.colliderect(obstacles4):
                     active = False
 
@@ -131,12 +131,12 @@ def infinity_runner():
         if player_x > monitor_size[0]:  
             player_x = 430
 
-        if y_change > 0 or player_y < 600:
+        if y_change > 0 or player_y < 615:
             player_y -= y_change
             y_change -= gravity
-        if player_y > 600:
-            player_y = 600
-        if player_y == 600 and y_change < 0:
+        if player_y > 615:
+            player_y = 615
+        if player_y == 615 and y_change < 0:
             y_change = 0
 
         if score > 150:
