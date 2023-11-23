@@ -3,8 +3,8 @@ import sys
 from game import Game
 from colors import Colors
 
-MENU_PATH = r'C:/Users/acgs_cesar/Desktop/projetos 1/projeto-g12/src/menu'
-TETRIS_PATH = r'C:/Users/acgs_cesar/Desktop/projetos 1/projeto-g12/src/tetris'
+MENU_PATH = r'C:\Users\fdayr\Documents\projects\cesar\projetos\projeto-g12\src\menu'
+TETRIS_PATH = r'C:\Users\fdayr\Documents\projects\cesar\projetos\projeto-g12\src\tetris'
 
 sys.path.append(f'{MENU_PATH}')
 from choose_name import handle_choose_name
