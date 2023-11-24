@@ -2,8 +2,7 @@ from grid import Grid
 from blocks import *
 import random
 import pygame
-
-SOUNDS_PATH = r'C:\Users\pcm7_cesar\Downloads\proj\projeto-g12\src\tetris\Sounds'
+from variables import SOUNDS_PATH
 class Game:
     def __init__(self):
         self.grid = Grid()

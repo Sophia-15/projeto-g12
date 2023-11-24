@@ -2,13 +2,9 @@ import pygame
 import sys
 from game import Game
 from colors import Colors
-
-MENU_PATH = r'C:\Users\pcm7_cesar\Downloads\proj\projeto-g12\src\menu'
-TETRIS_PATH = r'C:\Users\pcm7_cesar\Downloads\proj\projeto-g12\src\tetris'
-
+from variables import MENU_PATH, TETRIS_PATH
 sys.path.append(f'{MENU_PATH}')
 from choose_name import handle_choose_name
-
 
 def battery_tetris():
     pygame.init()
@@ -56,8 +52,8 @@ def battery_tetris():
             if event.type == pygame.KEYDOWN:
                 if game.game_over == True:
                     handle_choose_name(game.get_score(), 'tetris')
-                    game.over()
-                    sys.exit()
+                    # game.over()
+                    # sys.exit()
                 if event.key == pygame.K_LEFT and game.game_over == False:
                     game.move_left()
                 if event.key == pygame.K_RIGHT and game.game_over == False:

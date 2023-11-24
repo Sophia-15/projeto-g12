@@ -3,7 +3,7 @@ import random
 import os
 import pygame
 import sys
-TETRIS_PATH = r'C:\Users\pcm7_cesar\Downloads\proj\projeto-g12\src\tetris'
+from variables import TETRIS_PATH, FONT_PATH
 sys.path.append(TETRIS_PATH)
 from main_tetris import battery_tetris
 
@@ -18,10 +18,8 @@ monitor_size = [pygame.display.Info().current_w,
                 pygame.display.Info().current_h]
 
 screen = pygame.display.set_mode((monitor_size), pygame.RESIZABLE)
-font = pygame.font.Font(
-    r'C:\Users\pcm7_cesar\Downloads\proj\projeto-g12\src\menu\retro.ttf', 80)
-font_sm = pygame.font.Font(
-    r'C:\Users\pcm7_cesar\Downloads\proj\projeto-g12\src\menu\retro.ttf', 50)
+font = pygame.font.Font(FONT_PATH, 80)
+font_sm = pygame.font.Font(FONT_PATH, 50)
 clock = pygame.time.Clock()
 
 def infinity_runner():
@@ -37,7 +35,7 @@ def infinity_runner():
 
   background = (0,0,0)
   fps = 60
-  font = pygame.font.Font(r'C:\Users\pcm7_cesar\Downloads\proj\projeto-g12\src\menu\retro.ttf', 20)
+  font = pygame.font.Font(FONT_PATH, 20)
   timer = pygame.time.Clock()
 
 
@@ -56,13 +54,6 @@ def infinity_runner():
   obstacles_speed = 6
   active = True
   score = 0
-#   while running == False:
-#         display.fill(background)
-#         menu_inic = font.render(f'Controles: Botão esquerdo para esquerda;/nBotão direito para direita;/nBotão inferior(Espaço) para pular', True, white, (0,0,0))
-#         display.blit(menu_inic, (1, 1))
-#         if event.type == pygame.KEYDOWN:
-#             if event.key == pygame.K_SPACE:
-#                         running == True
   running = True
   while running:
         timer.tick(fps)
@@ -86,12 +77,12 @@ def infinity_runner():
                     score = 0
                     player_x = 50
                     obstacles = [
-    random.randint(600, 800), 
-    random.randint(1000, 1200), 
-    random.randint(1400, 1600), 
-    random.randint(1800, 2000),
-    random.randint(2200, 2400)
-    ]
+                        random.randint(600, 800), 
+                        random.randint(1000, 1200), 
+                        random.randint(1400, 1600), 
+                        random.randint(1800, 2000),
+                        random.randint(2200, 2400)
+                    ]
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP and y_change == 0:
                     y_change = 26
@@ -111,16 +102,6 @@ def infinity_runner():
                 if obstacles[i] < -30:
                     obstacles[i] = random.randint(1200, 1800)
                     score += 15 
-                    # if obstacles1.colliderect(obstacles0) or obstacles1.colliderect(obstacles2):
-                    #     obstacles[i] = random.randint(monitor_size[0], monitor_size[0])
-                    # if obstacles2.colliderect(obstacles0) or obstacles2.colliderect(obstacles1):
-                    #     obstacles[i] = random.randint(monitor_size[0], monitor_size[0])
-                    # if obstacles0.colliderect(obstacles1) or obstacles2.colliderect(obstacles2):
-                    #     obstacles[i] = random.randint(monitor_size[0], monitor_size[0])
-                    # if obstacles3.colliderect(obstacles2) or obstacles2.colliderect(obstacles1):
-                    #     obstacles[i] = random.randint(monitor_size[0], monitor_size[0])
-                    # if obstacles4.colliderect(obstacles1) or obstacles2.colliderect(obstacles2):
-                    #     obstacles[i] = random.randint(monitor_size[0], monitor_size[0])
                 if player.colliderect(obstacles0) or player.colliderect(obstacles1) or player.colliderect(obstacles2) or player.colliderect(obstacles3) or player.colliderect(obstacles4):
                     active = False
 
@@ -223,4 +204,23 @@ def menu():
 
         pygame.display.flip()
 
+def resting_screen():    
+    while True:
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    menu()
+
+        background_image = pygame.image.load(r"C:\Users\fdayr\Documents\projects\cesar\projetos\projeto-g12\src\menu\assets\mascote.png")
+        background_rect = background_image.get_rect()
+        background_image = pygame.transform.scale(background_image, monitor_size)
+        screen.blit(background_image, background_rect)
+        pygame.display.flip()
+
+
+# resting_screen()
 menu()

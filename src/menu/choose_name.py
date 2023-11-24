@@ -1,6 +1,7 @@
 import os
 import pygame
 import sys
+from variables import FONT_PATH
 
 os.environ['SDL_VIDEO_CENTERED'] = '1'
 
@@ -12,10 +13,8 @@ monitor_size = [pygame.display.Info().current_w,
                 pygame.display.Info().current_h]
 
 screen = pygame.display.set_mode((monitor_size), pygame.RESIZABLE)
-font = pygame.font.Font(
-    r'C:\Users\pcm7_cesar\Downloads\proj\projeto-g12\src\menu\retro.ttf', 124)
-font_sm = pygame.font.Font(
-    r'C:\Users\pcm7_cesar\Downloads\proj\projeto-g12\src\menu\retro.ttf', 80)
+font = pygame.font.Font(FONT_PATH, 124)
+font_sm = pygame.font.Font(FONT_PATH, 80)
 clock = pygame.time.Clock()
 
 def handle_choose_name(score, game_name):
@@ -69,7 +68,6 @@ def handle_choose_name(score, game_name):
                         score_csv = open(f'{game_name}.csv', 'a+')
                         score_csv.write(f'{"".join(name)}, {score}\n')
                         score_csv.close()
-                        pygame.quit()
 
         # Letra piscando
         current_time = pygame.time.get_ticks()

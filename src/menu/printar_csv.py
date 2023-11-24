@@ -1,5 +1,3 @@
-
-
 lista_runner = []
 dict_runner = {}
 
