@@ -134,11 +134,13 @@ def infinity_runner():
             display.blit(result_text, (150, 120))
             display.blit(instfim_text, (70, 140))
             running = False
-            handle_choose_name(score, 'infinity_runner')
+            return handle_choose_name(score, 'infinity_runner')
 
         pygame.display.flip()
 
 def menu():
+    
+
     games = [
         "INFINITY RUNNER",
         "TETRIS"
@@ -155,66 +157,72 @@ def menu():
     show_text = True
     blink_interval = 300
 
+    # resting_screen()
+
+    conttador = 0
     while True:
-        color = game_text_colors[0] if show_text else game_text_colors[1]
+        if conttador == 0:
+            conttador = resting_screen()
+        else:
+            color = game_text_colors[0] if show_text else game_text_colors[1]
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_DOWN:
+                        if game_cont != 2:
+                            game_cont += 1
+                        elif game_cont == 2:
+                            game_cont = 0
+                    if event.key == pygame.K_UP:
+                        if game_cont != 0:
+                            game_cont -= 1
+                    
+                    if event.key == pygame.K_RIGHT:
+                        if game_cont == 0:
+                            conttador = infinity_runner()
+                        elif game_cont == 1:
+                            conttador = battery_tetris()
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_DOWN:
-                    if game_cont != 2:
-                        game_cont += 1
-                    elif game_cont == 2:
-                        game_cont = 0
-                if event.key == pygame.K_UP:
-                    if game_cont != 0:
-                        game_cont -= 1
-                if event.key == pygame.K_RIGHT:
-                    if game_cont == 0:
-                        infinity_runner()
-                    elif game_cont == 1:
-                        battery_tetris()
+            current_time = pygame.time.get_ticks()
+            if current_time - last_blink_time > blink_interval:
+                show_text = not show_text
+                last_blink_time = current_time
 
-        current_time = pygame.time.get_ticks()
-        if current_time - last_blink_time > blink_interval:
-            show_text = not show_text
-            last_blink_time = current_time
+            screen.fill((104, 203, 134, 1.0))
 
-        screen.fill((104, 203, 134, 1.0))
+            main_menu_text = font.render("MENU PRINCIPAL", True, (41, 55, 91, 1.0))
+            main_menu_text_rect = main_menu_text.get_rect(
+                center=(monitor_size[0] // 2, 200))
 
-        main_menu_text = font.render("MENU PRINCIPAL", True, (41, 55, 91, 1.0))
-        main_menu_text_rect = main_menu_text.get_rect(
-            center=(monitor_size[0] // 2, 200))
+            infinity_runner_text = font_sm.render(
+                games[0], True, color if game_cont == 0 else (240, 253, 244))
+            infinity_runner_text_rect = infinity_runner_text.get_rect(
+                center=((monitor_size[0] // 2), (monitor_size[1] // 2) + 100))
 
-        infinity_runner_text = font_sm.render(
-            games[0], True, color if game_cont == 0 else (240, 253, 244))
-        infinity_runner_text_rect = infinity_runner_text.get_rect(
-            center=((monitor_size[0] // 2), (monitor_size[1] // 2) - 100))
+            tetris_text = font_sm.render(
+                games[1], True, color if game_cont == 1 else (240, 253, 244))
+            tetris_text_rect = tetris_text.get_rect(
+                center=((monitor_size[0] // 2), (monitor_size[1] // 2) + 300))
 
-        tetris_text = font_sm.render(
-            games[1], True, color if game_cont == 1 else (240, 253, 244))
-        tetris_text_rect = tetris_text.get_rect(
-            center=((monitor_size[0] // 2), (monitor_size[1] // 2) + 300))
+            screen.blit(main_menu_text, main_menu_text_rect)
+            screen.blit(infinity_runner_text, infinity_runner_text_rect)
+            screen.blit(tetris_text, tetris_text_rect)
 
-        screen.blit(main_menu_text, main_menu_text_rect)
-        screen.blit(infinity_runner_text, infinity_runner_text_rect)
-        screen.blit(tetris_text, tetris_text_rect)
-
-        pygame.display.flip()
+            pygame.display.flip()
 
 def resting_screen():    
     while True:
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
-                    menu()
-
+                    contador = 1
+                    return contador
+                
         background_image = pygame.image.load(r"C:\Users\fdayr\Documents\projects\cesar\projetos\projeto-g12\src\menu\assets\mascote.png")
         background_rect = background_image.get_rect()
         background_image = pygame.transform.scale(background_image, monitor_size)
@@ -224,3 +232,4 @@ def resting_screen():
 
 # resting_screen()
 menu()
+    

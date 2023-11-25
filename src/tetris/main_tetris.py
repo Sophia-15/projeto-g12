@@ -51,7 +51,7 @@ def battery_tetris():
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if game.game_over == True:
-                    handle_choose_name(game.get_score(), 'tetris')
+                    return handle_choose_name(game.get_score(), 'tetris')
                     # game.over()
                     # sys.exit()
                 if event.key == pygame.K_LEFT and game.game_over == False:

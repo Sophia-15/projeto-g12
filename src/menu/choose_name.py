@@ -68,7 +68,7 @@ def handle_choose_name(score, game_name):
                         score_csv = open(f'{game_name}.csv', 'a+')
                         score_csv.write(f'{"".join(name)}, {score}\n')
                         score_csv.close()
-
+                        return 0
         # Letra piscando
         current_time = pygame.time.get_ticks()
         if current_time - last_blink_time > blink_interval:
