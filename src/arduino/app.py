@@ -1,31 +1,34 @@
 import serial
-import webbrowser
+# import webbrowser
 from time import sleep
 import pyautogui
 
-PORT = 'COM3'
+PORT = 'COM7'
 
 arduino = serial.Serial(PORT, 9600)
 
 while True:
-  cu = ""
+  msg_formatted = ""
   msg = str(arduino.readline())
   for i in range(len(msg)):
 
     if i == 2 or i == 3 or i == 4 or i == 5:
-      cu += msg[i]
+      msg_formatted += msg[i]
 
-  print(cu)
-  if cu == 'abre':
-    # o cu abriu!
-    webbrowser.open("https://dinosaur-game.io")
-  elif cu == 'down':
+  print(msg_formatted)
+
+  if msg_formatted == 'ente':
+    pyautogui.press('right') #precisa resolver conflito
+    # pyautogui.keyUp('enter')
+  elif msg_formatted == 'down':
     pyautogui.press('down')
-  elif cu == 'left':
+  elif msg_formatted == 'left':
     pyautogui.press('left')
-  elif cu == 'righ':
+  elif msg_formatted == 'righ':
     pyautogui.press('right')
-  elif cu == 'sobe':
+  elif msg_formatted == 'sobe':
     pyautogui.press('up')
 
-  arduino.flush()
+  arduino.flush()       
+          
+

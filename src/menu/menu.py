@@ -219,11 +219,11 @@ def resting_screen():
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RIGHT:
+                if event.key == pygame.K_RIGHT: #precisa resolver conflito
                     contador = 1
                     return contador
                 
-        background_image = pygame.image.load(r"C:\Users\fdayr\Documents\projects\cesar\projetos\projeto-g12\src\menu\assets\mascote.png")
+        background_image = pygame.image.load(r"C:\Users\acgs_cesar\Desktop\projetos\projeto-g12\src\menu\assets\mascote.png")
         background_rect = background_image.get_rect()
         background_image = pygame.transform.scale(background_image, monitor_size)
         screen.blit(background_image, background_rect)
@@ -232,4 +232,4 @@ def resting_screen():
 
 # resting_screen()
 menu()
-    
+                              
