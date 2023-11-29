@@ -1,10 +1,10 @@
 import serial
-# import webbrowser
 from time import sleep
 import pyautogui
 import keyboard
 
-PORT = 'COM6'
+#Porta de entrada do usb do arduino | Trocar a entrada antes de executar
+PORT = 'COM6' 
 
 arduino = serial.Serial(PORT, 9600)
 
@@ -19,7 +19,7 @@ while True:
   print(msg_formatted)
 
   if msg_formatted == 'ente':
-    keyboard.press_and_release('enter') # :D
+    keyboard.press_and_release('enter') 
   elif msg_formatted == 'down':
     pyautogui.press('down')
   elif msg_formatted == 'left':
@@ -30,16 +30,3 @@ while True:
     pyautogui.press('up')
 
   arduino.flush()    
-
-
-
-
-
-#aaaaaaa
-
-
-
-
-   
-          
-
