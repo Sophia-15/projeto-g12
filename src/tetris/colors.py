@@ -2,7 +2,7 @@ class Colors:
     dark_green = (1,50,32)
     green = (47,230,23)
     red = (232,18,18)
-    pink = (255,74,174)
+    pink = (255, 74, 174)
     yellow = (237,234,4)
     purple = (166,0,247)
     cyan = (21,204,209)

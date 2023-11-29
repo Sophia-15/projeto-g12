@@ -23,27 +23,37 @@ font_sm = pygame.font.Font(FONT_PATH, 50)
 clock = pygame.time.Clock()
 
 def infinity_runner():
+  # Definindo variáveis de cor
   white = (255, 255, 255)
   blue = (0, 0, 255)
   orange = (255, 165, 0)
   yellow = (255, 255, 0)
   purple = (128, 0, 128)
   green = (1, 50, 32)
+  background = (0,0,0)
 
+  # Comando para criar a janela do jogo e definir a sua resolução
   display = pygame.display.set_mode(monitor_size, pygame.RESIZABLE)
   pygame.display.set_caption('Infinite Runner')
-
-  background = (0,0,0)
+  
+  # Definindo a velocidade que o jogo vai rodar
   fps = 60
+  # Definindo a fonte que o jogo irá usar
   font = pygame.font.Font(FONT_PATH, 20)
+  # Comando que vai fazer o jogo rodar a velocidade definida anteriormente
   timer = pygame.time.Clock()
 
-
+  # Definindo as posições iniciais do jogador
   player_x = 50
   player_y = 600
+
+  # Variáveis de movimento do jogador
   y_change = 0
   x_change = 0
+  # Variável que define a velocidade que o jogador cai
   gravity = 1.2
+  
+  # Definindo as posições iniciais dos obstáculos
   obstacles = [
     random.randint(600, 800), 
     random.randint(1000, 1200), 
@@ -51,75 +61,107 @@ def infinity_runner():
     random.randint(1800, 2000),
     random.randint(2200, 2400)
     ]
+  
+  # Definindo a velocidade inicial dos obstáculos
   obstacles_speed = 6
+
+  # Variável que define o estado do jogo, desligado ou ligado
   active = True
+
+  #Variável que armazena a pontuação do jogador
   score = 0
+
+  # Outra variável de estado do jogo, para mostrar o menu no final
   running = True
+
+  # Loop para deixar o jogo rodando até acabar
   while running:
+        # Inicializa a velocidade do jogo pelo fps definido anteriormente
         timer.tick(fps)
+
+        # Preenche o fundo do jogo 
         display.fill(background)
+
+        # Desenha o chão do jogo
         floor = pygame.draw.rect(display, white, [0, 650, monitor_size[0], 10])
+
+        # Desenha e posiciona o jogador no jogo
         player = pygame.draw.rect(display, (255,0,0), [player_x, player_y, 50, 50])
+
+        # Desenha e posiciona os obstáculos no jogo
         obstacles0 = pygame.draw.rect(display, blue, [obstacles[0], 600, 50, 50])
         obstacles1 = pygame.draw.rect(display, orange, [obstacles[1], 600, 50, 50])
         obstacles2 = pygame.draw.rect(display, yellow, [obstacles[2], 600, 50, 50])
         obstacles3 = pygame.draw.rect(display, purple, [obstacles[3], 600, 50, 50])
         obstacles4 = pygame.draw.rect(display, green, [obstacles[4], 600, 50, 50])
-        score_text = font.render(f'Score: {score}', True, white, (0,0,0))
-        display.blit(score_text, (1, 1))
 
+        # Define o texto da pontuação
+        score_text = font.render(f'Score: {score}', True, white, (0,0,0))
+        # Mostra a pontuação na tela
+        display.blit(score_text, (monitor_size[0]/2, 50))
+
+        # Loop para captar todas as ações feitas no jogo
         for event in pygame.event.get():
+            # Condição que finaliza o jogo se a janela for fechada
             if event.type == pygame.QUIT:
                 running = False
-            if event.type == pygame.KEYDOWN and not active:
-                if event.key == pygame.K_SPACE:
-                    active = True
-                    score = 0
-                    player_x = 50
-                    obstacles = [
-                        random.randint(600, 800), 
-                        random.randint(1000, 1200), 
-                        random.randint(1400, 1600), 
-                        random.randint(1800, 2000),
-                        random.randint(2200, 2400)
-                    ]
+            # Condição para quando o jogador apertar um botão
             if event.type == pygame.KEYDOWN:
+                # Condição que faz o jogador pular se ele estiver no chão e apertar a seta para cima
                 if event.key == pygame.K_UP and y_change == 0:
                     y_change = 28
+                # Condição que faz o jogador ir para direita se ele segurar a seta para direita
                 if event.key == pygame.K_RIGHT:
                     x_change = 6
+                # Condição que faz o jogador ir para esquerda se ele segurar a seta para esquerda
                 if event.key == pygame.K_LEFT:
                     x_change = -6
+            # Condição para quando o jogador soltar um botão
             if event.type == pygame.KEYUP:
+                # Condição para que o jogador para de ir para direita quando soltar a seta direita
                 if event.key == pygame.K_RIGHT:
                     x_change = 0
+                # Condição para que o jogador para de ir para esquerda quando soltar a seta esquerda
                 if event.key == pygame.K_LEFT:
                     x_change = 0
 
+        # Loop para interagir com os obstáculos
         for i in range(len(obstacles)):
             if active:
+                # Comando que faz os obstáculos irem para esquerda
                 obstacles[i] -=obstacles_speed
+
+                # Condição que faz o obstáculo voltar pra direita em uma posição aleatória se ele passar da tela
                 if obstacles[i] < -30:
                     obstacles[i] = random.randint(1200, 1800)
                     score += 15 
+
+                # Condição para terminar o jogo se o jogador entrar em contato com um obstáculo
                 if player.colliderect(obstacles0) or player.colliderect(obstacles1) or player.colliderect(obstacles2) or player.colliderect(obstacles3) or player.colliderect(obstacles4):
                     active = False
 
+        # Condição para o player receber a variável de movimento e se mover caso ela seja modificada
         if 0 <= player_x <= monitor_size[0]:
             player_x += x_change
+        # Condição para o player não sair da parte direita da tela se ele chegar no limite dela
         if player_x < 0:
             player_x = 0
+        # Condição para o player não sair da parte direita da tela se ele chegar no limite dela
         if player_x > monitor_size[0]:  
-            player_x = 430
+            player_x = monitor_size[0]
 
+        # Condição para o player receber a variável de movimento e se mover caso ela seja modificada, além do jogador ser afetado por gravidade quando ele pula
         if y_change > 0 or player_y < 600:
             player_y -= y_change
             y_change -= gravity
+        # Condição para o jogador voltar a altura do chão caso ele passe dela
         if player_y > 600:
             player_y = 600
+        # Concição para o player parar de modificar a sua altura quando ele atinge o chão
         if player_y == 600 and y_change < 0:
             y_change = 0
 
+        # Condições para os obstacúlos ficarem mais rápidos caso o jogador atinja uma certa quantidade de pontos
         if score > 150:
             obstacles_speed = 7
         if score > 300:
@@ -127,14 +169,11 @@ def infinity_runner():
         if score > 600:
             obstacles_speed = 9
 
+        # Condição para mostrar a pontuação quando o jogo acabar
         if active == False:
-            display.fill(background)
-            result_text = font.render(f'Score final: {score}', True, white, (0,0,0))
-            instfim_text = font.render(f'Aperte espaço para fechar o jogo', True, white, (0,0,0))
-            display.blit(result_text, (150, 120))
-            display.blit(instfim_text, (70, 140))
             running = False
-            return handle_choose_name(score, 'infinity_runner')
+            handle_choose_name(score, 'infinity_runner')
+            return 0
 
         pygame.display.flip()
 
@@ -171,9 +210,9 @@ def menu():
                     sys.exit()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_DOWN:
-                        if game_cont != 2:
+                        if game_cont != 1:
                             game_cont += 1
-                        elif game_cont == 2:
+                        elif game_cont == 1:
                             game_cont = 0
                     if event.key == pygame.K_UP:
                         if game_cont != 0:
@@ -184,6 +223,7 @@ def menu():
                             conttador = infinity_runner()
                         elif game_cont == 1:
                             conttador = battery_tetris()
+                            game_cont = 0
 
             current_time = pygame.time.get_ticks()
             if current_time - last_blink_time > blink_interval:
