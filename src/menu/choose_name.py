@@ -35,7 +35,7 @@ def handle_choose_name(score, game_name):
         (240, 253, 244)
     ]
 
-    blink_interval = 500
+    blink_interval = 250
     last_blink_time = pygame.time.get_ticks()
     show_text = True
 

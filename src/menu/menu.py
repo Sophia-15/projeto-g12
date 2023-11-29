@@ -18,7 +18,7 @@ monitor_size = [pygame.display.Info().current_w,
                 pygame.display.Info().current_h]
 
 screen = pygame.display.set_mode((monitor_size), pygame.RESIZABLE)
-font = pygame.font.Font(FONT_PATH, 80)
+font = pygame.font.Font(FONT_PATH, 70)
 font_sm = pygame.font.Font(FONT_PATH, 50)
 clock = pygame.time.Clock()
 
@@ -43,7 +43,7 @@ def infinity_runner():
   player_y = 600
   y_change = 0
   x_change = 0
-  gravity = 1.5
+  gravity = 1.2
   obstacles = [
     random.randint(600, 800), 
     random.randint(1000, 1200), 
@@ -85,7 +85,7 @@ def infinity_runner():
                     ]
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP and y_change == 0:
-                    y_change = 26
+                    y_change = 28
                 if event.key == pygame.K_RIGHT:
                     x_change = 6
                 if event.key == pygame.K_LEFT:
@@ -219,11 +219,11 @@ def resting_screen():
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RIGHT: #precisa resolver conflito
+                if event.key == pygame.K_RETURN: #precisa resolver conflito
                     contador = 1
                     return contador
                 
-        background_image = pygame.image.load(r"C:\Users\acgs_cesar\Desktop\projetos\projeto-g12\src\menu\assets\mascote.png")
+        background_image = pygame.image.load(r"C:\Users\acgs_cesar\Desktop\surto coletivo\projeto-g12\src\menu\assets\mascote.png")
         background_rect = background_image.get_rect()
         background_image = pygame.transform.scale(background_image, monitor_size)
         screen.blit(background_image, background_rect)

@@ -2,7 +2,7 @@ class Colors:
     dark_green = (1,50,32)
     green = (47,230,23)
     red = (232,18,18)
-    orange = (226,116,17)
+    pink = (255,74,174)
     yellow = (237,234,4)
     purple = (166,0,247)
     cyan = (21,204,209)
@@ -13,8 +13,8 @@ class Colors:
     black = (0, 0, 0)
     yellow_m = (162, 136, 59)
     ciano_blue = (49, 201, 176)
-    laranja_avanade = (241, 106, 38)
+    
 
     @classmethod
     def get_cell_colors(cls):
-        return [cls.dark_green,cls.green,cls.red,cls.orange,cls.yellow,cls.purple,cls.cyan,cls.blue,cls.black,cls.yellow_m,cls.ciano_blue,cls.laranja_avanade]
+        return [cls.dark_green,cls.green,cls.red,cls.pink,cls.yellow,cls.purple,cls.cyan,cls.blue,cls.black,cls.yellow_m,cls.ciano_blue]

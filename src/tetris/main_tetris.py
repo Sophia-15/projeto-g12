@@ -80,10 +80,10 @@ def battery_tetris():
         # if game.game_over == True:
         # screen.blit(game_over_surface, (320, 450, 50, 50))
 
-        pygame.draw.rect(screen, Colors.laranja_avanade, score_rect, 0, 10)
+        pygame.draw.rect(screen, Colors.black, score_rect, 0, 10)
         screen.blit(score_value_surface, score_value_surface.get_rect(centerx=score_rect.centerx,
                                                                       centery=score_rect.centery))
-        pygame.draw.rect(screen, Colors.laranja_avanade, next_rect, 0, 10)
+        pygame.draw.rect(screen, Colors.black, next_rect, 0, 10)
         game.draw(screen)
 
         pygame.display.update()

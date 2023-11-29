@@ -2,8 +2,9 @@ import serial
 # import webbrowser
 from time import sleep
 import pyautogui
+import keyboard
 
-PORT = 'COM7'
+PORT = 'COM6'
 
 arduino = serial.Serial(PORT, 9600)
 
@@ -18,8 +19,7 @@ while True:
   print(msg_formatted)
 
   if msg_formatted == 'ente':
-    pyautogui.press('right') #precisa resolver conflito
-    # pyautogui.keyUp('enter')
+    keyboard.press_and_release('enter') # :D
   elif msg_formatted == 'down':
     pyautogui.press('down')
   elif msg_formatted == 'left':
@@ -29,6 +29,17 @@ while True:
   elif msg_formatted == 'sobe':
     pyautogui.press('up')
 
-  arduino.flush()       
+  arduino.flush()    
+
+
+
+
+
+#aaaaaaa
+
+
+
+
+   
           
 
