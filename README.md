@@ -1,6 +1,7 @@
-<h1 align="center">
- ECOWAVE ARCADE
-</h1>
+
+<div align="center">
+ <img src="https://github.com/Sophia-15/projeto-g12/assets/67246528/85124103-f681-4ec8-8612-1a1a2de99250" alt="mascote g12" width="150" />
+</div>
 
 <p align="center">
   <a href="#sobre">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
