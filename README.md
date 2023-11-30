@@ -5,8 +5,9 @@
 <p align="center">
   <a href="#sobre">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#rodando">Rodando</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#código">Como funciona o código do menu?</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#jogos">Jogos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#código">Explicando o código do menu?</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#arduino">Como construir?</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#jogos">Jogos</a>
 </p> 
 
 ![ecowave](https://github.com/Sophia-15/projeto-g12/assets/67246528/fd7debaf-04e8-48dd-aedf-40059c31b361)
@@ -47,13 +48,21 @@ Adicionalmente, implementamos a lógica para a alternância de cor do texto. Ess
 ![image](https://github.com/Sophia-15/projeto-g12/assets/67246528/63870354-d844-45f1-b5b3-b5ef1b9bbb8f)
 </p>
 
+## Arduino
+<p>
+ Abaixo, temos um tutorial de como construímos nosso arcade.
+</p>
+
+[Montagem do protótipo](https://github.com/Sophia-15/projeto-g12/files/13507701/Tutorial.de.Montagem.pdf)
+
+
 ## Jogos
 <p>
   Dado que nosso projeto remete ao ambiente de fliperama, optamos por selecionar jogos clássicos, entre os quais se destacam o Tetris e o Infinity Runner.
 </p>
 
 ### Infinity Runner
-[PDf explicando a construção do Infinity Runner](https://github.com/Sophia-15/projeto-g12/files/13507514/Tutorial_InfinityRunner.pdf)
+[PDf explicando o desenvolvimento do Infinity Runner](https://github.com/Sophia-15/projeto-g12/files/13507514/Tutorial_InfinityRunner.pdf)
 
 ---
 
