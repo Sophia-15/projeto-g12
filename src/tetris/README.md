@@ -10,9 +10,7 @@
 - Git
 ```windows
 $ python
-```
-```python
-pip install pygame
+$ pip install pygame
 ```
 ### Passos de instalação
 Terminal:
@@ -43,3 +41,8 @@ $ cd diretorioDesejado\src\tetris
 
 *P.S.: a aceleração da velocidade de queda da peça (seta para baixo), proporciona um pequeno aumento na pontuação.*
 
+## Contribuidores
+- [Sophia Gallindo](https://github.com/Sophia-15)
+- [Pablo C. Muniz](https://github.com/pcmuniz)
+- [Ana Clara Gomes](https://github.com/Pandor4b)
+- [Gustavo Mourato](https://github.com/gustavoyoq)
